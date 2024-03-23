@@ -2,9 +2,11 @@ package dmacc.beans;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * @author Halmar Arteaga - harteagabran
@@ -12,28 +14,29 @@ import lombok.NoArgsConstructor;
  * Mar 20, 2024
  */
 @Entity
-@Data
+@NoArgsConstructor
 public class Employee {
 	@Id
-	@GeneratedValue
-	private long id;
-	private String firstname;
-	private String lastname;
-	private String position;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Getter
+	@Setter
+	public long id;
+	@Getter
+	@Setter
+	public String firstname;
+	@Getter
+	@Setter
+	public String lastname;
+	@Getter
+	@Setter
+	public String position;
 	
-	public Employee(int id, String fn, String ln, String pos) {
+	public Employee(long id, String fn, String ln, String pos) {
 		super();
 		this.id = id;
 		this.firstname = fn;
 		this.lastname = ln;
 		this.position = pos;
 	}
-
-	/**
-	 * 
-	 */
-	public Employee() {
-		// TODO Auto-generated constructor stub
-		super();
-	}
+	public Employee() { super();}
 }

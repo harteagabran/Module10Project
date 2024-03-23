@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Employee</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body style="background-color: #121212; color: #fff">
+<div class="container mx-6">
+	<h1 class="my-5">Add Form</h1>
+<form th:object="${Employee}" th:action="@{/update}" method="post">
+    <div class="form-group">
+        <input type="number" th:value="${Employee.id}" th:name="id" hidden />
+    </div>
+    <div class="form-group mb-2">
+        <label for="firstname" class="fs-4 mb-1">First Name</label>
+        <input type="text" class="form-control" id="firstname" th:value="${Employee.firstname}" th:name="firstname" />
+    </div>
+    <div class="form-group mb-2">
+        <label for="lastname" class="fs-4 mb-1">Last Name</label>
+        <input type="text" class="form-control" id="lastname" th:value="${Employee.lastname}" th:name="lastname" />
+    </div>
+    <div class="form-group mb-4">
+        <label for="position" class="fs-4 mb-1">Position</label>
+        <input type="text" class="form-control" id="position" th:value="${Employee.position}" th:name="position" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <a href="all" class="btn btn-secondary btn-lg">Cancel</a>
+</form>
+</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
