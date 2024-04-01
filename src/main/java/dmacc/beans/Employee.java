@@ -4,9 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
 /**
  * @author Halmar Arteaga - harteagabran
@@ -14,21 +14,19 @@ import lombok.Setter;
  * Mar 20, 2024
  */
 @Entity
-@NoArgsConstructor
+@Data
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter
-	@Setter
 	public long id;
-	@Getter
-	@Setter
+	@NotEmpty(message = "Can't be empty!")
+	@Size(min = 2, message = "Must be at least 2 chars")
 	public String firstname;
-	@Getter
-	@Setter
+	@NotEmpty(message = "Can't be empty!")
+	@Size(min = 2, message = "Must be at least 2 chars")
 	public String lastname;
-	@Getter
-	@Setter
+	@NotEmpty(message = "Can't be empty!")
+	@Size(min = 2, message = "Must be at least 2 chars")
 	public String position;
 	
 	public Employee(long id, String fn, String ln, String pos) {

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Add Employee</title>
@@ -10,21 +10,24 @@
 <body style="background-color: #121212; color: #fff">
 <div class="container mx-6">
 	<h1 class="my-5">Add Form</h1>
-<form th:object="${Employee}" th:action="@{/update}" method="post">
+<form action="#" th:object="${employee}" th:action="@{/update}" method="post">
     <div class="form-group">
-        <input type="number" th:value="${Employee.id}" th:name="id" hidden />
+        <input type="number" th:field="*{id}" hidden />
     </div>
     <div class="form-group mb-2">
         <label for="firstname" class="fs-4 mb-1">First Name</label>
-        <input type="text" class="form-control" id="firstname" th:value="${Employee.firstname}" th:name="firstname" />
+        <input type="text" class="form-control" id="firstname" th:field="*{firstname}" />
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>
     </div>
     <div class="form-group mb-2">
         <label for="lastname" class="fs-4 mb-1">Last Name</label>
-        <input type="text" class="form-control" id="lastname" th:value="${Employee.lastname}" th:name="lastname" />
+        <input type="text" class="form-control" id="lastname" th:field="*{lastname}" />
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>
     </div>
     <div class="form-group mb-4">
         <label for="position" class="fs-4 mb-1">Position</label>
-        <input type="text" class="form-control" id="position" th:value="${Employee.position}" th:name="position" />
+        <input type="text" class="form-control" id="position" th:field="*{position}" />
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></p>
     </div>
     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
     <a href="all" class="btn btn-secondary btn-lg">Cancel</a>
